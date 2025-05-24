@@ -6,6 +6,9 @@ import (
 )
 
 func strut() {
+
+	Pv("STRUCTS")
+
 	// structs
 	type people struct {
 		age  string

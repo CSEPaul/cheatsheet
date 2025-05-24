@@ -7,5 +7,7 @@ func Ps() {
 }
 
 func Pv(value string) {
+	fmt.Println("         ")
+	fmt.Println("--------------------")
 	fmt.Println("----", value, "-----")
 }

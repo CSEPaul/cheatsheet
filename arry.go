@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func arry() {
-	Pv("Arrays")
+	Pv("ARRAYS")
 	// Array of length 10
 	fmt.Println("Array of length 10")
 	var a [10]int
