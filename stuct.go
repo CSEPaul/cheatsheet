@@ -43,4 +43,5 @@ func strut() {
 		panic(err)
 	}
 	fmt.Println(string(u)) // {"Name":"Bob","Age":10,"Active":true}
+
 }
