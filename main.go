@@ -1,11 +1,13 @@
 package main
 
+import "github.com/CSEPaul/cheatsheet/cmd"
+
 func main() {
 
-	stringer()
-	arry()
-	mapper()
-	strut()
-	jsonRunner()
+	cmd.Arry()
+	cmd.Stringer()
+	cmd.Mapper()
+	cmd.Strut()
+	cmd.JsonRunner()
 
 }

@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"encoding/json"
@@ -31,7 +31,7 @@ type Social struct {
 	Twitter  string `json:"twitter"`
 }
 
-func jsonRunner() {
+func JsonRunner() {
 	Pv("JSON")
 
 	file, err := os.Open("./fakeproduct.json")

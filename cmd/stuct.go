@@ -1,11 +1,11 @@
-package main
+package cmd
 
 import (
 	"encoding/json"
 	"fmt"
 )
 
-func strut() {
+func Strut() {
 
 	Pv("STRUCTS")
 

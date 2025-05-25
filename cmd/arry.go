@@ -1,8 +1,8 @@
-package main
+package cmd
 
 import "fmt"
 
-func arry() {
+func Arry() {
 	Pv("ARRAYS")
 	// Array of length 10
 	fmt.Println("Array of length 10")

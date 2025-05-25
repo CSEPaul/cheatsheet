@@ -1,8 +1,8 @@
-package main
+package cmd
 
 import "fmt"
 
-func mapper() {
+func Mapper() {
 	Ps()
 	Pv("MAPS")
 	var c = map[string]string{"brand": "Ford", "model": "Mustang", "year": "1964"}

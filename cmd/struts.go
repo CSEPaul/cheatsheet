@@ -1,10 +1,10 @@
-package main
+package cmd
 
 import (
 	"fmt"
 )
 
-func stringer() {
+func Stringer() {
 	Pv("strings and numbers")
 	fmt.Println("test print strings")
 	fmt.Println("Numbers", 123)
