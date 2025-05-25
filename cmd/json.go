@@ -3,10 +3,12 @@ package cmd
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"os"
 	"reflect"
 	"strconv"
+	"time"
 )
 
 // Users struct which contains
@@ -29,6 +31,51 @@ type User struct {
 type Social struct {
 	Facebook string `json:"facebook"`
 	Twitter  string `json:"twitter"`
+}
+
+type fakeproduct2 struct {
+	Products []struct {
+		ID                 int      `json:"id"`
+		Title              string   `json:"title"`
+		Description        string   `json:"description"`
+		Category           string   `json:"category"`
+		Price              float64  `json:"price"`
+		DiscountPercentage float64  `json:"discountPercentage"`
+		Rating             float64  `json:"rating"`
+		Stock              int      `json:"stock"`
+		Tags               []string `json:"tags"`
+		Brand              string   `json:"brand,omitempty"`
+		Sku                string   `json:"sku"`
+		Weight             int      `json:"weight"`
+		Dimensions         struct {
+			Width  float64 `json:"width"`
+			Height float64 `json:"height"`
+			Depth  float64 `json:"depth"`
+		} `json:"dimensions"`
+		WarrantyInformation string `json:"warrantyInformation"`
+		ShippingInformation string `json:"shippingInformation"`
+		AvailabilityStatus  string `json:"availabilityStatus"`
+		Reviews             []struct {
+			Rating        int       `json:"rating"`
+			Comment       string    `json:"comment"`
+			Date          time.Time `json:"date"`
+			ReviewerName  string    `json:"reviewerName"`
+			ReviewerEmail string    `json:"reviewerEmail"`
+		} `json:"reviews"`
+		ReturnPolicy         string `json:"returnPolicy"`
+		MinimumOrderQuantity int    `json:"minimumOrderQuantity"`
+		Meta                 struct {
+			CreatedAt time.Time `json:"createdAt"`
+			UpdatedAt time.Time `json:"updatedAt"`
+			Barcode   string    `json:"barcode"`
+			QrCode    string    `json:"qrCode"`
+		} `json:"meta"`
+		Images    []string `json:"images"`
+		Thumbnail string   `json:"thumbnail"`
+	} `json:"products"`
+	Total int `json:"total"`
+	Skip  int `json:"skip"`
+	Limit int `json:"limit"`
 }
 
 func JsonRunner() {
@@ -78,5 +125,22 @@ func JsonRunner() {
 		panic(err)
 	}
 	fmt.Println(dat)
+
+	Pv("Fake Product 2 Json")
+	fakefile2, err := os.Open("./fakeproduct2.json")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(fakefile2)
+	fmt.Println(reflect.TypeOf(fakefile2))
+
+	defer fakefile2.Close()
+	byteValuefakefile2, _ := io.ReadAll(fakefile2)
+	var fake2 fakeproduct2
+	json.Unmarshal(byteValuefakefile2, &fake2)
+
+	fmt.Println(fake2)
+
+	Pv("Pretty Print Json")
 
 }
