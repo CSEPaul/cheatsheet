@@ -3,41 +3,69 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"os"
+	"reflect"
+	"strconv"
 )
 
-type Products []struct {
-	ID          int     `json:"id"`
-	Title       string  `json:"title"`
-	Price       float64 `json:"price"`
-	Description string  `json:"description"`
-	Category    string  `json:"category"`
-	Image       string  `json:"image"`
-	Rating      struct {
-		Rate  float64 `json:"rate"`
-		Count int     `json:"count"`
-	} `json:"rating"`
+// Users struct which contains
+// an array of users
+type Users struct {
+	Users []User `json:"users"`
+}
+
+// User struct which contains a name
+// a type and a list of social links
+type User struct {
+	Name   string `json:"name"`
+	Type   string `json:"type"`
+	Age    int    `json:"Age"`
+	Social Social `json:"social"`
+}
+
+// Social struct which contains a
+// list of links
+type Social struct {
+	Facebook string `json:"facebook"`
+	Twitter  string `json:"twitter"`
 }
 
 func jsonRunner() {
 	Pv("JSON")
 
-	file, err := os.ReadFile("json.go")
+	file, err := os.Open("./fakeproduct.json")
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(file)
+	fmt.Println(reflect.TypeOf(file))
 
+	defer file.Close()
+	byteValue, _ := ioutil.ReadAll(file)
+
+	Pv("Unmarshal when struct is known")
+	var users Users
+	json.Unmarshal(byteValue, &users)
 	/*
-		Pv("Unmarshal when struct is known")
-		var p Products
-		data := json.Unmarshal(file, &p)
-		fmt.Println(data)
-	*/
+		if err != nil {
+			log.Printf("error decoding response: %v", err)
+			if e, ok := err.(*json.SyntaxError); ok {
+				log.Printf("Syntax error at byte offset %d", e.Offset)
+			}
+			log.Printf("response:%q", file)
+			fmt.Println(err)
+		}*/
+	for i := 0; i < len(users.Users); i++ {
+		fmt.Println("User Type: " + users.Users[i].Type)
+		fmt.Println("User Age: " + strconv.Itoa(users.Users[i].Age))
+		fmt.Println("User Name: " + users.Users[i].Name)
+		fmt.Println("Facebook Url: " + users.Users[i].Social.Facebook)
+	}
 
 	Pv("Unmarshal when struct is unknown")
 	var dat map[string]interface{}
-	if err := json.Unmarshal(file, &dat); err != nil {
+	if err := json.Unmarshal(byteValue, &dat); err != nil {
 		panic(err)
 	}
 	fmt.Println(dat)
