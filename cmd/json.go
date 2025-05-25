@@ -44,7 +44,7 @@ func JsonRunner() {
 	defer file.Close()
 	byteValue, _ := ioutil.ReadAll(file)
 
-	Pv("Unmarshal when struct is known")
+	Pv("Unmarshal with a manual method and structure is known")
 	var users Users
 	json.Unmarshal(byteValue, &users)
 	/*
@@ -61,6 +61,15 @@ func JsonRunner() {
 		fmt.Println("User Age: " + strconv.Itoa(users.Users[i].Age))
 		fmt.Println("User Name: " + users.Users[i].Name)
 		fmt.Println("Facebook Url: " + users.Users[i].Social.Facebook)
+	}
+
+	Pv("Unmarshal when struct is known using a struct")
+	fmt.Println(users.Users[0].Name)
+	for key, values := range users.Users {
+		fmt.Println(key, values)
+		if values.Name == "Elliot" {
+			fmt.Println("Elliot Found")
+		}
 	}
 
 	Pv("Unmarshal when struct is unknown")
