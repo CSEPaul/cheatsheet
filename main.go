@@ -6,5 +6,6 @@ func main() {
 	arry()
 	mapper()
 	strut()
+	jsonRunner()
 
 }
