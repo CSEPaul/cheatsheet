@@ -9,7 +9,7 @@ import (
 )
 
 func StructReflect() {
-	Pv("Fake Product 2 Json")
+	Pv("Struct Reflect")
 	fakefile2, err := os.Open("./fakeproduct2.json")
 	if err != nil {
 		panic(err)
