@@ -142,5 +142,10 @@ func JsonRunner() {
 	fmt.Println(fake2)
 
 	Pv("Pretty Print Json")
+	b, err := json.MarshalIndent(fake2, "", "  ")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Print(string(b))
 
 }
