@@ -9,5 +9,7 @@ func main() {
 	cmd.Mapper()
 	cmd.Strut()
 	cmd.JsonRunner()
+	cmd.JsonRunner2()
+	cmd.StructReflect()
 
 }
