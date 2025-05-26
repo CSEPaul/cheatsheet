@@ -10,4 +10,6 @@ func Pv(value string) {
 	fmt.Println("         ")
 	fmt.Println("--------------------")
 	fmt.Println("----", value, "-----")
+	fmt.Println("--------------------")
+	fmt.Println("         ")
 }

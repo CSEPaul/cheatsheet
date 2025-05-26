@@ -20,7 +20,6 @@ func StructReflect() {
 	var fake2 fakeproduct2
 	json.Unmarshal(byteValuefakefile2, &fake2)
 
-	Pv("Reflection")
 	ty := reflect.TypeOf(fake2)
 	field := ty.Field(0)
 	fmt.Println(field)

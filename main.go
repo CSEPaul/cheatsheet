@@ -11,5 +11,6 @@ func main() {
 	cmd.JsonRunner()
 	cmd.JsonRunner2()
 	cmd.StructReflect()
+	cmd.JsonFilter()
 
 }
